@@ -1,3 +1,2 @@
 ---
-sysctl:
-  files: []
+sysctl_config_files: [] # -> /etc/sysctl.d/

@@ -1,19 +1,13 @@
 ---
-# NOTES
-# -----
-# https://madaidans-insecurities.github.io/guides/linux-hardening.html#kernel
-# systemd-sysctl.service
-# At boot, systemd-sysctl.service reads configuration files to configure sysctl kernel parameters.
-
 - name: sysctl role
   tags:
     - sysctl
   block:
 
-  # cp files
-  - when: sysctl.files | length > 0
+  # sysctl_config_files
+  - when: sysctl_config_files | length > 0
     name: Copy config files
-    loop: "{{ sysctl.files }}"
+    loop: "{{ sysctl_config_files }}"
     become: true
     ansible.builtin.copy:
       src: "{{ item }}"
